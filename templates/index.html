@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tandrima Nandy | Software Developer, AI &amp; Data Enthusiast</title>
+<meta name="description" content="Portfolio of Tandrima Nandy: Python, Flask, AI, data engineering and cloud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="nebula" id="nebula"></div>
+<div class="moon" id="moon"></div>
+<canvas id="space"></canvas>
+<div class="zoom-ctl" aria-label="Universe zoom">
+  <button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">&minus;</button><button id="zreset" aria-label="Reset view">&#8634;</button>
+</div>
+
+<header class="nav" id="nav">
+  <a href="#home" class="brand">&lt;TN/&gt;</a>
+  <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
+  <nav id="menu">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+    <a href="#experience">Experience</a><a href="#education">Education</a><a href="#certifications">Certifications</a>
+    <a href="#journey">Journey</a><a href="#contact">Contact</a>
+    <span class="dot" id="dot"></span>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-text">
+    <p class="mono tag">$ whoami</p>
+    <h1>Hi, I'm <span class="gold">Tandrima Nandy</span></h1>
+    <h2>Software Developer | AI &amp; Data Enthusiast | Cloud Learner</h2>
+    <p class="lead">I'm a BCA and MCA graduate with a strong foundation in <b>Computer Science, Python, Web Development, AI, Data Engineering, and Cloud Computing</b>. I enjoy turning ideas and data into practical, intelligent, user-focused digital solutions.</p>
+    <p class="lead">Hands-on with <b>Python, Flask, SQL, SQLite, Pandas, NumPy, HTML, CSS, JavaScript, AWS, Big Data</b>, and AI-based development. Projects: <b>Data Sense AI</b> and <b>Symptom Sense AI</b>.</p>
+    <p class="mono small">Currently exploring: AI Engineering, Data Engineering, Cloud Computing, Full-Stack Development</p>
+    <p class="quote">"Building intelligent solutions where Code, Data &amp; AI meet."</p>
+    <div class="btns">
+      <a class="btn primary" href="#about">Explore My Universe</a>
+      <a class="btn" href="#projects">View Projects</a>
+      <a class="btn ghost" href="#contact">Contact Me</a>
+    </div>
+  </div>
+  <div class="portrait-wrap" id="portrait">
+    <div class="ring r1"><i></i></div><div class="ring r2"><i></i></div>
+    <div class="portrait">
+      <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Tandrima Nandy" onerror="this.remove()">
+      <span class="initials">TN</span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="title">About Me</h2>
+  <div class="about-grid">
+    <div class="card glass term">
+      <p class="mono tag">about.md</p>
+      <p>I'm from Howrah, West Bengal, India: an MCA student and aspiring Software Engineer passionate about building innovative, user-focused applications. I enjoy Python, web development, cloud technologies and AI-driven solutions, and I love solving real-world problems through clean code, continuous learning and creative thinking.</p>
+      <p>I'm best at Python development, AI and NLP implementation. I'm open to Web Development, Software Engineering, Cloud Development and IT/technical work, backed by course projects in coding, team leading and debugging, plus certifications in Web Development, Data Engineering, AI/ML and App Development.</p>
+    </div>
+    <div class="orbit-list">
+      {% for t,d in [('BCA','Computer Applications foundation'),('MCA','CGPA 9.09, top 5%'),('Web Development','Flask, HTML, CSS, JS'),('AI &amp; NLP','My strongest focus'),('Data Engineering','Pandas, Big Data, SQL'),('Cloud','AWS S3 and EC2')] %}
+      <div class="chip glass"><b>{{ t|safe }}</b><small>{{ d }}</small></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="title">Skills &amp; Tech Universe</h2>
+  <p class="sub mono">hover or tap a technology</p>
+  <div class="skill-groups">
+    {% for cat, items in skills.items() %}
+    <div class="card glass">
+      <h3 class="mono">{{ cat }}</h3>
+      <div class="nodes">
+        {% for s in items %}<button class="node" data-desc="{{ s.description }}">{{ s.name }}</button>{% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="desc mono" id="skill-desc" aria-live="polite">&gt; select a technology to see what I use it for</p>
+</section>
+
+<section id="projects">
+  <h2 class="title">Projects</h2>
+  <div class="projects">
+    {% for p in projects %}
+    <article class="card glass project tilt">
+      {% if p.gallery %}
+      <div class="gallery" aria-label="{{ p.name }} screenshots">
+        <div class="gal-stage">
+          <button class="gal-main" type="button" aria-label="Open screenshot full size"><img src="{{ url_for('static', filename=p.gallery[0].src) }}" alt="{{ p.gallery[0].cap }}"></button>
+          <button class="gal-nav prev" type="button" aria-label="Previous screenshot">&#10094;</button>
+          <button class="gal-nav next" type="button" aria-label="Next screenshot">&#10095;</button>
+        </div>
+        <p class="gal-cap mono small"></p>
+        <div class="thumbs">
+          {% for g in p.gallery %}<button class="thumb{{ ' on' if loop.first }}" type="button" data-src="{{ url_for('static', filename=g.src) }}" data-cap="{{ g.cap }}"><img loading="lazy" src="{{ url_for('static', filename=g.src) }}" alt="{{ g.cap }}"></button>{% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <div class="shot">
+        <img src="{{ url_for('static', filename=p.image) }}" alt="{{ p.name }} screenshot" onerror="this.remove()">
+        <span class="mono">{{ p.name }} screenshot</span>
+      </div>
+      {% endif %}
+      <h3 class="gold">{{ p.name }}</h3>
+      <p>{{ p.description }}</p>
+      <ul class="feat">{% for f in p.features|split %}<li>{{ f }}</li>{% endfor %}</ul>
+      <div class="tags">{% for t in p.tech|split %}<span class="mono">{{ t }}</span>{% endfor %}</div>
+      <div class="btns">
+        <a class="btn primary" href="{{ p.live_url }}" target="_blank" rel="noopener">Live Demo</a>
+        <a class="btn" href="{{ p.github_url }}" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="experience">
+  <h2 class="title">Experience</h2>
+  <div class="timeline">
+    {% for e in experience %}
+    <div class="tl-item card glass">
+      <h3>{{ e.title }}</h3>
+      <p class="gold">{{ e.place }}</p><p class="mono small">{{ e.period }}</p>
+      <ul>{% for x in e.points|split %}<li>{{ x }}</li>{% endfor %}</ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="education">
+  <h2 class="title">Education</h2>
+  <div class="timeline">
+    {% for e in education %}
+    <div class="tl-item card glass">
+      <h3>{{ e.title }}</h3>
+      <p class="gold">{{ e.place }}</p><p class="mono small">{{ e.period }}</p>
+      <p><b>{{ e.score }}</b></p>
+      <div class="tags">{% for x in e.points|split %}<span class="mono">{{ x }}</span>{% endfor %}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="certifications">
+  <h2 class="title">Certifications &amp; Achievements</h2>
+  <div class="certs">
+    {% for c in certs %}
+    <div class="card glass cert {{ 'award' if c.kind == 'Achievement' }}">
+      <span class="mono small">{{ c.kind }}</span>
+      <h3>{{ c.title }}</h3><p>{{ c.issuer }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="journey">
+  <h2 class="title">My Journey</h2>
+  <p class="sub mono">click a milestone</p>
+  <div class="journey" id="journey-path">
+    {% for t,d in [('BCA','Started with Computer Applications at Techno India University (2021-2024) and graduated as Bronze Medallist.'),('MCA','Postgraduate studies (2024-2026) with CGPA 9.09, top 5% of the cohort.'),('Web Development','Interned as a Web Developer at Interns Elite (Feb-Mar 2023) building Flask apps.'),('Data Engineering','Learned Big Data, data mining and earned the AICTE Data Engineering certification.'),('AI','Built NLP and AI-driven projects like Data Sense AI and Symptom Sense AI.'),('Cloud Computing','Working with AWS S3 and EC2 and cloud fundamentals.'),('Software Development','Growing into a full-stack software engineer building real-world solutions.')] %}
+    <button class="stop" data-info="{{ d }}"><i></i><span>{{ t }}</span></button>
+    {% endfor %}
+  </div>
+  <p class="desc mono" id="journey-info" aria-live="polite">&gt; pick a stop on the route</p>
+</section>
+
+<section id="contact">
+  <h2 class="title">Contact</h2>
+  <div class="contact-grid">
+    <form class="card glass portal" id="contact-form" novalidate>
+      <label>Name<input name="name" required maxlength="100" autocomplete="name"></label>
+      <label>Email<input name="email" type="email" required maxlength="150" autocomplete="email"></label>
+      <label>Message<textarea name="message" rows="5" required maxlength="2000"></textarea></label>
+      <button class="btn primary" type="submit">Send Message</button>
+      <p class="mono small" id="form-status" role="status"></p>
+    </form>
+    <div class="card glass links">
+      <h3 class="mono">connect</h3>
+      <a href="mailto:nandytandrima@gmail.com">nandytandrima@gmail.com</a>
+      <a href="https://github.com/Tandrimanandy" target="_blank" rel="noopener">GitHub: Tandrimanandy</a>
+      <a href="https://www.linkedin.com/in/tandrima-nandy/" target="_blank" rel="noopener">LinkedIn: tandrima-nandy</a>
+      <a href="https://leetcode.com/u/TandrimaNandy/" target="_blank" rel="noopener">LeetCode: TandrimaNandy</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <b>Tandrima Nandy</b><span>Software Developer | AI &amp; Data Enthusiast</span>
+  <p><a href="https://github.com/Tandrimanandy">GitHub</a> <a href="https://www.linkedin.com/in/tandrima-nandy/">LinkedIn</a> <a href="mailto:nandytandrima@gmail.com">Email</a></p>
+  <p class="mono small">&copy; 2026 Tandrima Nandy &middot; Made with Code &amp; Curiosity</p>
+</footer>
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" aria-label="Close">&times;</button>
+  <button class="gal-nav prev" aria-label="Previous">&#10094;</button>
+  <figure><img id="lb-img" alt=""><figcaption class="mono small" id="lb-cap"></figcaption></figure>
+  <button class="gal-nav next" aria-label="Next">&#10095;</button>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
