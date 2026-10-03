@@ -20,13 +20,13 @@
 ![Database](https://img.shields.io/badge/database-SQLite-lightgrey?style=flat-square)
 ![Theme](https://img.shields.io/badge/theme-space%20%2F%20universe-0a0f1c?style=flat-square)
 
-[Overview](#-overview) · [Features](#-features) · [Tech Stack](#-tech-stack--why-i-chose-it) · [Getting Started](#-getting-started) · [Project Structure](#-project-structure) · [Customization](#-customization) · [Contact](#-contact)
+[Overview](#overview) · [Features](#features) · [Tech Stack](#tech-stack--why-i-chose-it) · [Getting Started](#getting-started) · [Project Structure](#project-structure) · [Customization](#customization) · [Contact](#contact)
 
 </div>
 
 ---
 
-## 📌 Overview
+## Overview
 
 This is my personal portfolio, a single-page website built with **Flask** and **SQLite**. It presents my background, skills, projects, experience, education and certifications in an interactive **"universe" theme**: a live starfield that responds to the mouse, can be zoomed and panned, and sits behind every section.
 
@@ -34,50 +34,50 @@ All content (projects, skills, timeline, certificates) is stored in a SQLite dat
 
 ---
 
-## ✨ Features
+## Features
 
 Each card below describes a function of the site.
 
 <table>
   <tr>
     <td width="33%" valign="top">
-      <h3>🌌 Interactive Universe</h3>
+      <h3>Interactive Universe</h3>
       A canvas starfield with depth layers, twinkling stars and shooting stars. Zoom with the <b>+/−</b> buttons or <b>Ctrl + mouse wheel</b>, and drag empty space to pan.
     </td>
     <td width="33%" valign="top">
-      <h3>🧠 Skills Constellation</h3>
+      <h3>Skills Constellation</h3>
       Skills are grouped by category (Programming, Web, Database, Data &amp; AI, Cloud &amp; Big Data, Apps &amp; Tools). Click any node to read what I use it for.
     </td>
     <td width="33%" valign="top">
-      <h3>🚀 Projects Showcase</h3>
+      <h3>Projects Showcase</h3>
       Project cards with description, tech tags, key features, live demo and GitHub links, plus a screenshot gallery with a full-screen lightbox.
     </td>
   </tr>
   <tr>
     <td valign="top">
-      <h3>💼 Experience &amp; Education</h3>
+      <h3>Experience &amp; Education</h3>
       Structured timeline entries for my internship, MCA and BCA, loaded from the database.
     </td>
     <td valign="top">
-      <h3>🏅 Certifications &amp; Awards</h3>
+      <h3>Certifications &amp; Awards</h3>
       Certificates and achievements displayed as cards, including Anthropic, AICTE, TATA/Forage and university recognitions.
     </td>
     <td valign="top">
-      <h3>🛤️ My Journey</h3>
+      <h3>My Journey</h3>
       A clickable route of milestones, from BCA to Software Development, each with a short explanation.
     </td>
   </tr>
   <tr>
     <td valign="top">
-      <h3>✉️ Contact Form</h3>
+      <h3>Contact Form</h3>
       A form that posts to <code>/api/contact</code>. Name, email format and message length are validated on the server before saving to SQLite.
     </td>
     <td valign="top">
-      <h3>🔐 Admin Inbox</h3>
+      <h3>Admin Inbox</h3>
       Saved messages are viewable as JSON at <code>/admin/messages?key=…</code>, protected by an <code>ADMIN_KEY</code> environment variable.
     </td>
     <td valign="top">
-      <h3>📱 Responsive &amp; Accessible</h3>
+      <h3>Responsive &amp; Accessible</h3>
       Mobile menu, fewer stars on small screens, scroll-reveal animations, and support for <code>prefers-reduced-motion</code>.
     </td>
   </tr>
@@ -85,7 +85,7 @@ Each card below describes a function of the site.
 
 ---
 
-## 🧰 Tech Stack & Why I Chose It
+## Tech Stack & Why I Chose It
 
 Click any card to open the official website of that technology.
 
@@ -156,7 +156,7 @@ Click any card to open the official website of that technology.
 
 ---
 
-## 🗂️ Featured Projects
+## Featured Projects
 
 | Project | Description | Stack | Links |
 |---|---|---|---|
@@ -165,7 +165,7 @@ Click any card to open the official website of that technology.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Python 3.9 or newer
@@ -195,7 +195,7 @@ Click any card to open the official website of that technology.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 tandrima_portfolio/
@@ -215,7 +215,7 @@ tandrima_portfolio/
 
 ---
 
-## 🛠️ Customization
+## Customization
 
 **Profile photo:** place your portrait at `static/images/profile.jpg`.
 
@@ -239,11 +239,11 @@ set ADMIN_KEY=your-secret-key
 export ADMIN_KEY=your-secret-key
 ```
 
-> ⚠️ Change the default `change-me` key before deploying anywhere public.
+> **Warning:** Change the default `change-me` key before deploying anywhere public.
 
 ---
 
-## 🧭 Navigation Tips
+## Navigation Tips
 
 - **Zoom:** `+` / `−` buttons or <kbd>Ctrl</kbd> + mouse wheel
 - **Pan:** drag on empty space
@@ -251,7 +251,7 @@ export ADMIN_KEY=your-secret-key
 
 ---
 
-## 📬 Contact
+## Contact
 
 Have a question or an opportunity? Use the contact form on the website, or reach me through GitHub.
 
